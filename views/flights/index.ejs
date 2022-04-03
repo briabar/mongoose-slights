@@ -1,0 +1,13 @@
+<%- include('../partials/header') %> 
+    <% for( flight of allFlights ) { %>
+      <h2>DEPARTS: <%= flight.departs %> </h2>
+      <ul>
+        <li>airport: <%= flight.airport %> </li>
+        <li>airline: <%= flight.airline %> </li>
+        <li>flight no: <%= flight.flightNo %> </li>
+
+      </ul>
+    <% } %>
+
+    <a href="new">Add Flight</a>
+<%- include('../partials/footer') %> 
