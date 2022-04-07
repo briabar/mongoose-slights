@@ -1,0 +1,42 @@
+<%- include('../partials/header') %> 
+      <h2>flight no: <%= flight.flightNo %> </h2>
+      <ul>
+        <li>departs: <%= flight.departs %> </li>
+        <li>airport: <%= flight.airport %> </li>
+        <li>airline: <%= flight.airline %> </li>
+        <% for (let i =0; i < flight.destination.length; i++) {%> 
+        <li>Destination <%= i + 1 %>: <%= flight.destination[i].airport %> </li>
+        <li>Arrival time: <%= flight.destination[i].arrival %> </li>
+        <% } %> 
+      </ul>
+      <h3>Tickets: </h3>
+      <ul>
+          <% if (tickets === false) { %>
+              <h4> No Tickets Found</h4>
+        <% } else { %>
+            <% for (let i = 0; i < tickets.length; i++) { %> 
+            <h4>Ticket <%= i+1 %> </h4>
+            <li><%=tickets[i].seat %></li>
+            <li><%=tickets[i].price %></li>
+            <!-- <a href="/tickets/delete/<%= tickets[i]._id%>">Delete Ticket</a> -->
+            <% }; %> 
+          <% } %> 
+      </ul>
+
+      <h3>Add Destination</h2>
+        <form id="dest-form" action="/flights/destinations/<%= flight._id %>"  method="POST">
+            <label>airport</label>
+            <select name="airport">
+                <option value="ATL">ATL</option>
+                <option value="DFW">DFW</option>
+                <option value="DEN" selected>DEN</option>
+                <option value="LAX">LAX</option>
+                <option value="SAN">SAN</option>
+            </select>
+            <label>Departs:</label>
+                <input type="text" name="arrival">
+                <input type="submit" value="Add Destination">
+        </form>
+
+        <a href="/flights/tickets/new/<%= flight._id %>" >Add New Ticket</a>
+<%- include('../partials/footer') %> 

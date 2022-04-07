@@ -7,7 +7,7 @@ var logger = require('morgan');
 //connect to teh database with Mongoose ;D
 require('./config/database');
 var indexRouter = require('./routes/index');
-var flightsRouter = require('./routes/flights');
+const flightsRouter = require('./routes/flights');
 
 var app = express();
 
